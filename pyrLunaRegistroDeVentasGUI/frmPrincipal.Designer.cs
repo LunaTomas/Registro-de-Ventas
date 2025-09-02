@@ -108,7 +108,6 @@
             dtpFecha.Name = "dtpFecha";
             dtpFecha.Size = new Size(383, 35);
             dtpFecha.TabIndex = 1;
-            dtpFecha.ValueChanged += this.dtpFecha_ValueChanged;
             // 
             // lstProducto
             // 
@@ -118,6 +117,7 @@
             lstProducto.Name = "lstProducto";
             lstProducto.Size = new Size(383, 38);
             lstProducto.TabIndex = 2;
+            lstProducto.TextChanged += lstProducto_TextChanged;
             // 
             // txtCantidad
             // 
@@ -130,7 +130,7 @@
             txtCantidad.PromptChar = ' ';
             txtCantidad.Size = new Size(383, 35);
             txtCantidad.TabIndex = 3;
-            txtCantidad.MaskInputRejected += this.txtCantidad_MaskInputRejected;
+            txtCantidad.TextChanged += txtCantidad_TextChanged;
             // 
             // txtPrecioUnitario
             // 
@@ -143,6 +143,7 @@
             txtPrecioUnitario.PromptChar = ' ';
             txtPrecioUnitario.Size = new Size(383, 35);
             txtPrecioUnitario.TabIndex = 4;
+            txtPrecioUnitario.TextChanged += txtPrecioUnitario_TextChanged;
             // 
             // frmRegistroDeVentasDeHardware
             // 
@@ -161,7 +162,6 @@
             Controls.Add(lblFecha);
             Name = "frmRegistroDeVentasDeHardware";
             Text = "Registro de ventas de hardware";
-            Load += this.frmRegistroDeVentasDeHardware_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -178,20 +178,5 @@
         private ComboBox lstProducto;
         private MaskedTextBox txtCantidad;
         private MaskedTextBox txtPrecioUnitario;
-
-        private void dtpFecha_ValueChanged(object sender, EventArgs e)
-        {
-            // Aquí puedes agregar la lógica que desees ejecutar cuando cambie la fecha
-        }
-
-        private void txtCantidad_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-            // Aquí puedes agregar la lógica que desees ejecutar cuando la entrada de la máscara sea rechazada
-        }
-
-        private void frmRegistroDeVentasDeHardware_Load(object sender, EventArgs e)
-        {
-            // Aquí puedes agregar la lógica que desees ejecutar cuando se cargue el formulario
-        }
     }
 }
