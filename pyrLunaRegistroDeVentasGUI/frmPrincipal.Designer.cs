@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistroDeVentasDeHardware));
             lblFecha = new Label();
             lblProducto = new Label();
             lblCantidad = new Label();
@@ -37,9 +38,9 @@
             dtpFecha = new DateTimePicker();
             cmbProducto = new ComboBox();
             txtPrecioUnitario = new MaskedTextBox();
-            nudCantidad = new NumericUpDown();
-            lblResultado = new Label();
-            ((System.ComponentModel.ISupportInitialize)nudCantidad).BeginInit();
+            mskCantidad = new MaskedTextBox();
+            lstVentas = new ListBox();
+            btnEliminar = new Button();
             SuspendLayout();
             // 
             // lblFecha
@@ -103,6 +104,7 @@
             btnCancelar.TabIndex = 7;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // dtpFecha
             // 
@@ -115,6 +117,7 @@
             // 
             // cmbProducto
             // 
+            cmbProducto.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbProducto.Font = new Font("Segoe UI", 15.75F);
             cmbProducto.FormattingEnabled = true;
             cmbProducto.Location = new Point(174, 58);
@@ -136,30 +139,48 @@
             txtPrecioUnitario.TabIndex = 5;
             txtPrecioUnitario.TextChanged += txtPrecioUnitario_TextChanged;
             // 
-            // nudCantidad
+            // mskCantidad
             // 
-            nudCantidad.Enabled = false;
-            nudCantidad.Font = new Font("Segoe UI", 16F);
-            nudCantidad.Location = new Point(174, 101);
-            nudCantidad.Name = "nudCantidad";
-            nudCantidad.Size = new Size(383, 36);
-            nudCantidad.TabIndex = 4;
-            nudCantidad.ValueChanged += nudCantidad_ValueChanged;
+            mskCantidad.Enabled = false;
+            mskCantidad.Font = new Font("Segoe UI", 15.75F);
+            mskCantidad.HidePromptOnLeave = true;
+            mskCantidad.Location = new Point(174, 102);
+            mskCantidad.Mask = "99999";
+            mskCantidad.Name = "mskCantidad";
+            mskCantidad.PromptChar = ' ';
+            mskCantidad.Size = new Size(383, 35);
+            mskCantidad.TabIndex = 9;
+            mskCantidad.ValidatingType = typeof(int);
+            mskCantidad.TextChanged += mskCantidad_TextChanged;
             // 
-            // lblResultado
+            // lstVentas
             // 
-            lblResultado.Location = new Point(21, 222);
-            lblResultado.Name = "lblResultado";
-            lblResultado.Size = new Size(536, 167);
-            lblResultado.TabIndex = 8;
+            lstVentas.FormattingEnabled = true;
+            lstVentas.ItemHeight = 15;
+            lstVentas.Location = new Point(21, 225);
+            lstVentas.Name = "lstVentas";
+            lstVentas.Size = new Size(536, 169);
+            lstVentas.TabIndex = 10;
+            // 
+            // btnEliminar
+            // 
+            btnEliminar.Font = new Font("Segoe UI", 15.75F);
+            btnEliminar.Location = new Point(203, 184);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(114, 35);
+            btnEliminar.TabIndex = 11;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // frmRegistroDeVentasDeHardware
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(578, 398);
-            Controls.Add(lblResultado);
-            Controls.Add(nudCantidad);
+            Controls.Add(btnEliminar);
+            Controls.Add(lstVentas);
+            Controls.Add(mskCantidad);
             Controls.Add(txtPrecioUnitario);
             Controls.Add(cmbProducto);
             Controls.Add(dtpFecha);
@@ -169,10 +190,12 @@
             Controls.Add(lblCantidad);
             Controls.Add(lblProducto);
             Controls.Add(lblFecha);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmRegistroDeVentasDeHardware";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Registro de ventas de hardware";
             Load += frmRegistroDeVentasDeHardware_Load;
-            ((System.ComponentModel.ISupportInitialize)nudCantidad).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -188,7 +211,8 @@
         private DateTimePicker dtpFecha;
         private ComboBox cmbProducto;
         private MaskedTextBox txtPrecioUnitario;
-        private NumericUpDown nudCantidad;
-        private Label lblResultado;
+        private MaskedTextBox mskCantidad;
+        private ListBox lstVentas;
+        private Button btnEliminar;
     }
 }
